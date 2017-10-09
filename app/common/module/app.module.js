@@ -12,8 +12,10 @@ var http_1 = require("@angular/http");
 // Declarations
 var app_Component_1 = require("../../common/app-component/app.Component");
 var menu_list_component_1 = require("../../menus/menu-list.component");
+var category_component_1 = require("../../categories/category.component");
 var menu_details_component_1 = require("../../menus/menusDetails/menu-details-component");
 var menu_service_1 = require("../../menus/menu.service");
+var category_service_1 = require("../../categories/category.service");
 var app_routes_1 = require("../../common/route/app.routes");
 // Decorator
 var AppModule = (function () {
@@ -33,10 +35,12 @@ AppModule = __decorate([
         declarations: [
             app_Component_1.AppComponent,
             menu_list_component_1.MenuListComponent,
+            category_component_1.CategoryListComponent,
             menu_details_component_1.MenuDetailsComponent,
         ],
         providers: [
-            menu_service_1.MenuService
+            menu_service_1.MenuService,
+            category_service_1.categoryService
         ],
         bootstrap: [app_Component_1.AppComponent]
     })
