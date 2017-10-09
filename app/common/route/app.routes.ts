@@ -2,6 +2,8 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
 import { MenuListComponent } from '../../menus/menu-list.component';
 import { MenuDetailsComponent } from '../../menus/menusDetails/menu-details-component';
+import { CategoryListComponent } from '../../categories/category.component';
+
 // import { dogRoutes }    from './dogs/dog.routes';
 
 
@@ -9,11 +11,12 @@ import { MenuDetailsComponent } from '../../menus/menusDetails/menu-details-comp
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/',
+        redirectTo: '/menu',
         pathMatch: 'full'
       }, 
    { path: 'menu', component: MenuListComponent },
    { path: 'menu/:id', component: MenuDetailsComponent }, 
+   { path: 'menu/:id/category', component: CategoryListComponent },
    // ...dogRoutes
 ];
 
