@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
-import { MenuListComponent } from './menus/menu-list.component';
-  import { MenuDetailsComponent } from './menus/menusDetails/menu-details-component';
+import { MenuListComponent } from '../../menus/menu-list.component';
+import { MenuDetailsComponent } from '../../menus/menusDetails/menu-details-component';
 // import { dogRoutes }    from './dogs/dog.routes';
 
 

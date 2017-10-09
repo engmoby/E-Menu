@@ -1,7 +1,7 @@
 "use strict";
 var router_1 = require("@angular/router");
-var menu_list_component_1 = require("./menus/menu-list.component");
-var menu_details_component_1 = require("./menus/menusDetails/menu-details-component");
+var menu_list_component_1 = require("../../menus/menu-list.component");
+var menu_details_component_1 = require("../../menus/menusDetails/menu-details-component");
 // import { dogRoutes }    from './dogs/dog.routes';
 // Route Configuration
 exports.routes = [
