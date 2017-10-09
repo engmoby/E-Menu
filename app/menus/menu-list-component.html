@@ -1,0 +1,8 @@
+<div>
+    <ul class="items">
+        <li *ngFor="let h of menuList"> 
+        <a [routerLink]="['/menu', h.Id]">{{ h.DisplayValue }}</a>
+        
+        </li>
+    </ul>
+ </div> 
