@@ -15,6 +15,7 @@ var menu_list_component_1 = require("./menus/menu-list.component");
 var menu_details_component_1 = require("./menus/menusDetails/menu-details-component");
 var menu_service_1 = require("./menus/menu.service");
 var app_routes_1 = require("./app.routes");
+//سيسي
 // Decorator
 var AppModule = (function () {
     function AppModule() {
