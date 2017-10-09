@@ -30,7 +30,7 @@ var MenuDetailsComponent = (function () {
 MenuDetailsComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: " \n     \n   <div *ngIf='menuObj'>\n   <img src=\"{{ menuObj.ImageList[0].Image}}\"/>\n   \n       {{ menuObj.DisplayValue }} \n       {{ menuObj.Id }} \n       \n      \n</div> \n  ",
+        template: " \n     \n   <div *ngIf='menuObj'>\n   \n   \n       {{ menuObj.menuName }} \n       {{ menuObj.menuId }} \n       \n      \n</div> \n  ",
     }),
     __metadata("design:paramtypes", [menu_service_1.MenuService, router_1.ActivatedRoute])
 ], MenuDetailsComponent);

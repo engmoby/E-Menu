@@ -1,7 +1,7 @@
 <div>
     <ul class="items">
         <li *ngFor="let h of menuList"> 
-        <a [routerLink]="['/menu', h.Id]">{{ h.DisplayValue }}</a>
+        <a [routerLink]="['/menu', h.menuId]">{{ h.menuName }}</a>
         
         </li>
     </ul>

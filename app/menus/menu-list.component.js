@@ -27,7 +27,7 @@ var MenuListComponent = (function () {
 MenuListComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: " \n     \n   <div>\n   <ul class=\"items\">\n       <li *ngFor=\"let h of menuList\"> \n       <a [routerLink]=\"['/menu', h.Id]\">{{ h.DisplayValue }}</a>\n       \n       </li>\n   </ul>\n</div> \n  ",
+        templateUrl: '../app/menus/menu-list-component.html',
     }),
     __metadata("design:paramtypes", [menu_service_1.MenuService])
 ], MenuListComponent);

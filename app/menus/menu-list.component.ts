@@ -5,17 +5,7 @@ import {Menu}           from './Menu';
  
 @Component({
   selector: 'my-app',  
-  template: ` 
-     
-   <div>
-   <ul class="items">
-       <li *ngFor="let h of menuList"> 
-       <a [routerLink]="['/menu', h.Id]">{{ h.DisplayValue }}</a>
-       
-       </li>
-   </ul>
-</div> 
-  `,
+  templateUrl:'../app/menus/menu-list-component.html',
 }) 
 export class MenuListComponent implements OnInit {
   

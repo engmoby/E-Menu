@@ -14,7 +14,7 @@ var Observable_1 = require("rxjs/Observable");
 var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
-        this.hotelUrl = 'http://gmgapi.azurewebsites.net/SystemParameters/Hotels/GetAll?langId=en';
+        this.hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/';
     }
     MenuService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
@@ -23,17 +23,27 @@ var MenuService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     MenuService.prototype.getData = function () {
-        return this.http.get('http://gmgapi.azurewebsites.net/SystemParameters/Hotels/GetAll?langId=en')
-            .map(this.extractData)
+        return this.http.get(this.hotelUrl + 'Menus?langId=en', { headers: this.getHeaders() })
+            .map(this.extractArrayData)
             .catch(this.handleError);
     };
     MenuService.prototype.getMenuDetails = function (id) {
-        return this.http.get('http://gmgapi.azurewebsites.net/SystemParameters/Hotels/GetHotelDetails/' + id + '?langId=en')
+        return this.http.get(this.hotelUrl + 'Menus/' + id + '?langId=en', { headers: this.getHeaders() })
             .map(this.extractData)
             .catch(this.handleError);
     };
+    MenuService.prototype.getHeaders = function () {
+        var headers = new http_1.Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Authorization', 'bearer XyIn6dsUyZ0DyqcGLS0fQBKUxK611tKwWXGlYnLsuIu8xnqUkMfJ-HcGNuGu8W5mmK8qBAYWrPqTyxucWGGZSgOXF8j2zEQaiXoXLr-AMlIJUn8w70-pZ_pS4W-v45EkkZCKMZUQWclWTVKtA_rw_2kIpZwucMdwNxRGZOPfQipgumBpBZXGMoALWDHQ15_VGay4Nffzffm69e2e-Ou6yUDT2p9B1MVs4FtfL6afv0r9jYJ_hrhqU5l9XQhwR6HluLsBPqhLytRin96M0hKdvcki3X3yjaov62_8Mx9phWtp0tfV8w7hq9wdrD_qCS8DFw73FrnILaZoDedouctBu3kxKM2rmt6mPn7PLb6bj2Y');
+        return headers;
+    };
     MenuService.prototype.extractData = function (res) {
         var body = res.json();
+        return body || [];
+    };
+    MenuService.prototype.extractArrayData = function (res) {
+        var body = res.json().results;
         return body || [];
     };
     return MenuService;

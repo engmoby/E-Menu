@@ -9,10 +9,10 @@ import {  ActivatedRoute } from '@angular/router';
   template: ` 
      
    <div *ngIf='menuObj'>
-   <img src="{{ menuObj.ImageList[0].Image}}"/>
    
-       {{ menuObj.DisplayValue }} 
-       {{ menuObj.Id }} 
+   
+       {{ menuObj.menuName }} 
+       {{ menuObj.menuId }} 
        
       
 </div> 
