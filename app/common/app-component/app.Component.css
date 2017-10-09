@@ -1,0 +1,30 @@
+/* Jumbotron */
+.demo-layout-transparent {
+    background: linear-gradient(
+      
+      ),
+      url('http://gmgbackend.azurewebsites.net/Uploads/21057815_10212545161477460_560128102_o.jpg') center / cover;
+    height: 400px;
+  }
+  
+  /* Nav Bar */
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+  
+  /* Header Text */
+  .header-text{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    color: white;
+  }
+  
+  /* Content Wrapper */
+  .container{
+    width: 80%;
+    margin: 0 auto;
+  }
+  

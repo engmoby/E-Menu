@@ -30,7 +30,7 @@ getMenuDetails(id:number):Observable<Menu> {
 private getHeaders(){
     let headers = new Headers();
     headers.append('Accept', 'application/json');
-    headers.append('Authorization','bearer XyIn6dsUyZ0DyqcGLS0fQBKUxK611tKwWXGlYnLsuIu8xnqUkMfJ-HcGNuGu8W5mmK8qBAYWrPqTyxucWGGZSgOXF8j2zEQaiXoXLr-AMlIJUn8w70-pZ_pS4W-v45EkkZCKMZUQWclWTVKtA_rw_2kIpZwucMdwNxRGZOPfQipgumBpBZXGMoALWDHQ15_VGay4Nffzffm69e2e-Ou6yUDT2p9B1MVs4FtfL6afv0r9jYJ_hrhqU5l9XQhwR6HluLsBPqhLytRin96M0hKdvcki3X3yjaov62_8Mx9phWtp0tfV8w7hq9wdrD_qCS8DFw73FrnILaZoDedouctBu3kxKM2rmt6mPn7PLb6bj2Y');
+    headers.append('Authorization','bearer x3n1vSQeK4e8SqlCGc_K8dFhVmUdO9CMhWXO-SEqpHzSzzUg6QvjKHq5-WEu81htAl7hYGTH3WjEfIApJUeBP9bNnNTx9W2J6mrb6-6P9102qhkugsYU3y4cCtreu6B8ZTgweKV4xjabQ_Wi3eG7QsYs2OiZHUGOQQoAp-MeUEktldJotiZ0w-XBQy6-omkE7uXA9k3QPKyUIhpJ_1s0wZ6soMrRVMAL6HxEELoOh-XfYV6r0ofIeNi_xuL6jHjtvY93aONAFxEy8AoSQh0r9xLS3i2jeN1h9Z7IQgZwgGi6DS1Bc28O0BgniFG-pdOYiy3RxXBv56wL_QNUaNzx3E-OGyi7mPhwqTG1D75Wh7Q');
     return headers;
   }
 

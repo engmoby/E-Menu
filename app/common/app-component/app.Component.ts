@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 // Import router directives
 // Deprecated
-// import { ROUTER_DIRECTIVES } from '@angular/router';
+// import { ROUTER_DIRECTIVES } from '@angular/router'; 
 
 @Component({
   selector: 'my-app',
+  styleUrls: ['../app/common/app-component/app.Component.css'],
   template: `
     <div class="demo-layout-transparent mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--transparent">
