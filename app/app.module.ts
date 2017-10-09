@@ -4,16 +4,10 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 // Declarations
-import { AppComponent }         from './app.component';
-import { CatListComponent }   from './cats/cat-list.component';
-// import { CatDetailsComponent }  from './cats/cat-details.component';
-import { DogListComponent }      from './dogs/dog-list.component';
+import { AppComponent }         from './app.component';  
 import { MenuListComponent }      from './menus/menu-list.component';
 import { MenuDetailsComponent } from './menus/menusDetails/menu-details-component';
-import { MenuService }      from './menus/menu.service';
-// import { DogDetailsComponent }  from './dogs/dog-details.component';
-// import { PetService }          from './pet.service';
-// import { Pet }          from './pet';
+import { MenuService }      from './menus/menu.service'; 
 import { routing } from './app.routes';
 
 // Decorator
@@ -26,13 +20,9 @@ import { routing } from './app.routes';
     routing
   ],
   declarations: [
-    AppComponent,
-    CatListComponent,
+    AppComponent, 
     MenuListComponent,
-    MenuDetailsComponent,
-    // CatDetailsComponent,
-    DogListComponent,
-    // DogDetailsComponent
+    MenuDetailsComponent,  
   ],
   providers: [
     MenuService

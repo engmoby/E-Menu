@@ -11,15 +11,9 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 // Declarations
 var app_component_1 = require("./app.component");
-var cat_list_component_1 = require("./cats/cat-list.component");
-// import { CatDetailsComponent }  from './cats/cat-details.component';
-var dog_list_component_1 = require("./dogs/dog-list.component");
 var menu_list_component_1 = require("./menus/menu-list.component");
 var menu_details_component_1 = require("./menus/menusDetails/menu-details-component");
 var menu_service_1 = require("./menus/menu.service");
-// import { DogDetailsComponent }  from './dogs/dog-details.component';
-// import { PetService }          from './pet.service';
-// import { Pet }          from './pet';
 var app_routes_1 = require("./app.routes");
 // Decorator
 var AppModule = (function () {
@@ -38,11 +32,8 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            cat_list_component_1.CatListComponent,
             menu_list_component_1.MenuListComponent,
             menu_details_component_1.MenuDetailsComponent,
-            // CatDetailsComponent,
-            dog_list_component_1.DogListComponent,
         ],
         providers: [
             menu_service_1.MenuService
