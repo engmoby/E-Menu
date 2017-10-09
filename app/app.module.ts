@@ -9,7 +9,7 @@ import { MenuListComponent }      from './menus/menu-list.component';
 import { MenuDetailsComponent } from './menus/menusDetails/menu-details-component';
 import { MenuService }      from './menus/menu.service'; 
 import { routing } from './app.routes';
-   //سيسي
+   
 // Decorator
 @NgModule({
   imports: [
