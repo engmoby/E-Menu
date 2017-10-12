@@ -7,22 +7,15 @@ import { APPConstant } from '../shared/app.constant'
 @Injectable()
 export class AuthenticationService {
   
-    //  private hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
   constructor ( private http: Http, private authorizationService:AuthorizationService  ) { }
   
 
   authenticate(email:string,password:string):any{
-    var credentials = {
-        'username': email,
-        'password': password,
-        'grant_type':'password'
-      }
-       return this.requestToken(credentials, 'password');
+      var creds = "username=" + email + "&password=" + password +"&grant_type=password";
+       return this.requestToken(creds);
    }
    
-   requestToken(credentials:any, grantType:string):any {
-    //    credentials.append('grant_type', grantType)
-    var creds = "username=" + credentials.username + "&password=" + credentials.password +"&grant_type=" + credentials.grant_type;
+   requestToken(creds:any):any {
     var result = this.http.post(APPConstant.API_URL + "token",creds, {headers: this.getHeaders()})
     .map(response => this.authorizationService.setAuthInfo(response.json()))
     // .map(this.extractData(Response,this.authorizationService))
@@ -31,7 +24,24 @@ export class AuthenticationService {
      return result;
       
   }
-  
+  isAuthenticated() {
+    return !!this.authorizationService.getAuthInfo();
+  }
+  getToken(forceRefresh) {
+    var authInfo = this.authorizationService.getAuthInfo();
+    var expirydate = new Date(authInfo['.expires']); 
+    if (forceRefresh || new Date() >= expirydate) {
+      return this.refreshToken(authInfo['refresh_token'])
+    }
+    return authInfo;
+    // var defer = $q.defer();
+    // defer.resolve(authInfo);
+    // return defer.promise;
+  }
+  refreshToken(refreshToken) {
+    var creds = "refresh_token=" + refreshToken + "&grant_type=refresh_token";
+    return this.requestToken(creds);
+  }
   private handleError (error: Response) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
@@ -44,10 +54,8 @@ export class AuthenticationService {
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       return headers;
   }
-
-    private extractData(res:Response, authorizationService:AuthorizationService) {
+  private extractData(res:Response, authorizationService:AuthorizationService) {
         let body = res.json();
-        
         authorizationService.setAuthInfo(body)
         return body || [];
     }

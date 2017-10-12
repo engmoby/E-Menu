@@ -16,4 +16,8 @@ export class AuthorizationService {
    // $localStorage.authInfo['expires_in'] = currentDate.setSeconds(currentDate.getSeconds() + $localStorage.authInfo['expires_in']);
   }
 
+  getAuthInfo():any {
+      return this.localStorageService.get('authInfo');
+    }
+
 } 
