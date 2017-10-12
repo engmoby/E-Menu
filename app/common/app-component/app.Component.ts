@@ -26,11 +26,12 @@ import { Component } from '@angular/core';
       </header>
 
       <main class="mdl-layout__content">
-      <h1 class="header-text">List Of Our Menus...</h1>       
+      <h1 class="header-text">Welcome</h1>       
       </main>
+      
     </div>
 
-    <!-- Router Outlet -->
+    <!-- Router Outlet --> 
     <router-outlet></router-outlet>
   `,
   // Not necessary as we have provided directives using

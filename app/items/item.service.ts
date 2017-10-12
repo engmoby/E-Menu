@@ -1,31 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Http, Response,Headers } from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
-import {CategoryModel}           from './category.model';
-import {ItemModel}           from '../items/item.model';
+import {ItemModel}           from './item.model';
 @Injectable()
-export class categoryService {
+export class ItemService {
   
     private apiUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
   constructor ( private http: Http  ) { }
    
-   
-  private handleError (error: Response) {
-    // in a real world app, we may send the server to some remote logging infrastructure
-    // instead of just logging it to the console
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
-  }
-
-  getData(menuId:number):Observable<CategoryModel[]> {
-    return this.http.get(this.apiUrl+'Menus/'+menuId+'/Categories', {headers: this.getHeaders()})
+ 
+  getData(catId:number):Observable<ItemModel[]> {
+    return this.http.get(this.apiUrl+'Categories/'+catId+'/Items', {headers: this.getHeaders()})
         .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
-  getItemsList(catId:number):Observable<ItemModel[]> {
-    return this.http.get(this.apiUrl+'Categories/'+catId+'/Items', {headers: this.getHeaders()})
-        .map(this.extractArrayData)
+getMenuDetails(id:number):Observable<ItemModel> {
+    return this.http.get(this.apiUrl+'Categories/'+id, {headers: this.getHeaders()})
+        .map(this.extractData)
         .catch(this.handleError);
 }
 
@@ -44,5 +36,11 @@ private extractArrayData(res:Response) {
     let body = res.json().results;
     return body || [];
 } 
-
+  
+private handleError (error: Response) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
+  }
 } 
