@@ -9,6 +9,7 @@ import { LoginComponent } from '../../login/login.component';
 import { ItemListComponent } from '../../items/item.component';
 import { HomeComponent } from '../../home/home.component';
 // import { dogRoutes }    from './dogs/dog.routes';
+import { CanActivateTeam } from '../authorization/anonymous.role'
 
 
 // Route Configuration
@@ -18,12 +19,12 @@ export const routes: Routes = [
         redirectTo: '/home',
         pathMatch: 'full'
       }, 
-   { path: 'login', component: LoginComponent },
-   { path: 'home', component: HomeComponent },
-   { path: 'menu', component: MenuListComponent },
-   { path: 'menu/:id', component: MenuDetailsComponent }, 
-   { path: 'menu/:id/category', component: CategoryListComponent },
-   { path: 'menu/:id/item', component: ItemListComponent },
+   { path: 'login', component: LoginComponent},
+   { path: 'home', component: HomeComponent,canActivate: [CanActivateTeam] },
+   { path: 'menu', component: MenuListComponent,canActivate: [CanActivateTeam] },
+   { path: 'menu/:id', component: MenuDetailsComponent,canActivate: [CanActivateTeam] }, 
+   { path: 'menu/:id/category', component: CategoryListComponent,canActivate: [CanActivateTeam] },
+   { path: 'menu/:id/item', component: ItemListComponent,canActivate: [CanActivateTeam] },
    // ...dogRoutes
 ];
 

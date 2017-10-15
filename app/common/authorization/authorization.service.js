@@ -18,13 +18,14 @@ var AuthorizationService = (function () {
         this.localStorageService.add('authInfo', info);
         var currentDate = new Date();
         var k = this.localStorageService.get('authInfo');
-        console.log(k);
-        console.log(this.localStorageService.get('authInfo')['expires_in']);
         this.localStorageService.get('authInfo')['expires_in'] = currentDate.setSeconds(currentDate.getSeconds() + this.localStorageService.get('authInfo')['expires_in']);
         // $localStorage.authInfo['expires_in'] = currentDate.setSeconds(currentDate.getSeconds() + $localStorage.authInfo['expires_in']);
     };
     AuthorizationService.prototype.getAuthInfo = function () {
         return this.localStorageService.get('authInfo');
+    };
+    AuthorizationService.prototype.isLoggedIn = function () {
+        return !!this.localStorageService.get('authInfo');
     };
     return AuthorizationService;
 }());

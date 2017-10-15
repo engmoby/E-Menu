@@ -20,7 +20,7 @@ import { APPConstant } from '../shared/app.constant'
 import { AuthorizationService } from '../authorization/authorization.service'
 import { AuthenticationService } from '../authentication/authentication.service'
 import { LoginComponent } from '../../login/login.component'
-
+import { CanActivateTeam } from '../authorization/anonymous.role'
 
 import {httpFactory} from '../authentication/httpFactory';
 
@@ -36,6 +36,7 @@ import {httpFactory} from '../authentication/httpFactory';
         prefix: 'my-app',
         storageType: 'localStorage'
     }),
+    // CanActivateTeam
     // APPConstant,
     // AuthorizationService,
     // AuthenticationService
@@ -48,6 +49,7 @@ import {httpFactory} from '../authentication/httpFactory';
     MenuDetailsComponent,
     LoginComponent,
     ItemListComponent,
+    
   ],
   providers: [
     MenuService,
@@ -56,6 +58,7 @@ import {httpFactory} from '../authentication/httpFactory';
     AuthorizationService,
     AuthenticationService,
     ItemService,
+    CanActivateTeam,
     {
       provide: Http,
       useFactory: httpFactory,

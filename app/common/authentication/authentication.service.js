@@ -26,7 +26,7 @@ var AuthenticationService = (function () {
         var _this = this;
         var result = this.http.post("token", creds, { headers: this.getHeaders() })
             .map(function (response) { return _this.authorizationService.setAuthInfo(response.json()); })
-            .catch(this.handleError).subscribe();
+            .catch(this.handleError);
         return result;
     };
     AuthenticationService.prototype.isAuthenticated = function () {

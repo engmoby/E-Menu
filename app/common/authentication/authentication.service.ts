@@ -23,7 +23,7 @@ export class AuthenticationService {
     var result = this.http.post( "token",creds, {headers: this.getHeaders()})
     .map(response => this.authorizationService.setAuthInfo(response.json()))
     // .map(this.extractData(Response,this.authorizationService))
-    .catch(this.handleError).subscribe()
+    .catch(this.handleError);
       
      return result;
       

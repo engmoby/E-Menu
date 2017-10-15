@@ -26,6 +26,7 @@ var app_constant_1 = require("../shared/app.constant");
 var authorization_service_1 = require("../authorization/authorization.service");
 var authentication_service_1 = require("../authentication/authentication.service");
 var login_component_1 = require("../../login/login.component");
+var anonymous_role_1 = require("../authorization/anonymous.role");
 var httpFactory_1 = require("../authentication/httpFactory");
 // Decorator
 var AppModule = (function () {
@@ -62,6 +63,7 @@ AppModule = __decorate([
             authorization_service_1.AuthorizationService,
             authentication_service_1.AuthenticationService,
             item_service_1.ItemService,
+            anonymous_role_1.CanActivateTeam,
             {
                 provide: http_1.Http,
                 useFactory: httpFactory_1.httpFactory,

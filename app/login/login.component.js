@@ -8,20 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
 var authentication_service_1 = require("../common/authentication/authentication.service");
+var authorization_service_1 = require("../common/authorization/authorization.service");
 var LoginComponent = (function () {
-    function LoginComponent(authenticationService) {
+    function LoginComponent(authenticationService, router, AuthorizationService) {
         this.authenticationService = authenticationService;
+        this.router = router;
+        this.AuthorizationService = AuthorizationService;
         this.email = "";
         this.password = "";
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        // this.router= Router;
+        if (this.AuthorizationService.isLoggedIn())
+            this.router.navigateByUrl('/home');
+    };
     LoginComponent.prototype.onSubmit = function (data) {
+        var _this = this;
         // .subscribe(
         //     posts => this.menuList = posts );
         // this.submitted = true;
         // this.data = JSON.stringify(data, null, 2);
-        this.authenticationService.authenticate(this.email, this.password);
+        var k = this.authenticationService.authenticate(this.email, this.password).subscribe(function (data) {
+            _this.router.navigateByUrl('/home');
+        }, function (error) {
+            // Processing for failures
+        });
+        console.log(k);
         console.log(data);
         console.log(this.email, this.password);
     };
@@ -32,7 +47,7 @@ LoginComponent = __decorate([
         selector: 'my-app',
         templateUrl: '../app/login/login.html',
     }),
-    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router, authorization_service_1.AuthorizationService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
