@@ -1,14 +1,16 @@
-<form (ngSubmit)="onSubmit()">
-    <div class="form-group">
+<form (ngSubmit)="onSubmit()" style="width: 50%;">
+ 
+    
+    <div class="mg-contact-form-input">
         <label for="email">Email</label>
-        <input type="text"  id="email" name="email" [(ngModel)]="email" required >
+        <input type="text"  class="form-control" id="email" name="email" [(ngModel)]="email" required >
     </div>
-   
-    <div class="form-group">
+    <div class="mg-contact-form-input">
+            
         <label for="password">password</label>
         <input type="text" class="form-control" id="password" [(ngModel)]="password" name="password"> 
     </div>
    
     <button type="submit" class="btn btn-success">Submit</button>
-   
+
 </form>

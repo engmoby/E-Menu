@@ -28,7 +28,7 @@ import { Component } from '@angular/core';
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav link-effect-4">
         <li class="active"><a [routerLink]="['/home']">Home</a> </li>
-          // <li><a  [routerLink]="['/menu']">Menu </a> </li>
+        <!-- <li><a  [routerLink]="['/menu']">Menu </a> </li>-->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div> 
