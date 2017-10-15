@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,Headers } from '@angular/http'; 
+import { Http, Response,Headers,RequestOptions } from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
 import {CategoryModel}           from './category.model';
 import {ItemModel}           from '../items/item.model';
 @Injectable()
 export class categoryService {
-  
-    private apiUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
+   
   constructor ( private http: Http  ) { }
    
    
@@ -18,14 +17,16 @@ export class categoryService {
   }
 
   getData(menuId:number):Observable<CategoryModel[]> {
-    return this.http.get(this.apiUrl+'Menus/'+menuId+'/Categories', {headers: this.getHeaders()})
-        .map(this.extractArrayData)
+    return this.http.get('Menus/'+menuId+'/Categories',new RequestOptions({
+      withCredentials:true
+    }))  .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
   getItemsList(catId:number):Observable<ItemModel[]> {
-    return this.http.get(this.apiUrl+'Categories/'+catId+'/Items', {headers: this.getHeaders()})
-        .map(this.extractArrayData)
+    return this.http.get('Categories/'+catId+'/Items',new RequestOptions({
+      withCredentials:true
+    })) .map(this.extractArrayData)
         .catch(this.handleError);
 }
 

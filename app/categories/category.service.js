@@ -14,7 +14,6 @@ var Observable_1 = require("rxjs/Observable");
 var categoryService = (function () {
     function categoryService(http) {
         this.http = http;
-        this.apiUrl = 'http://ecatalogbackend.azurewebsites.net/api/';
     }
     categoryService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
@@ -23,13 +22,15 @@ var categoryService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     categoryService.prototype.getData = function (menuId) {
-        return this.http.get(this.apiUrl + 'Menus/' + menuId + '/Categories', { headers: this.getHeaders() })
-            .map(this.extractArrayData)
+        return this.http.get('Menus/' + menuId + '/Categories', new http_1.RequestOptions({
+            withCredentials: true
+        })).map(this.extractArrayData)
             .catch(this.handleError);
     };
     categoryService.prototype.getItemsList = function (catId) {
-        return this.http.get(this.apiUrl + 'Categories/' + catId + '/Items', { headers: this.getHeaders() })
-            .map(this.extractArrayData)
+        return this.http.get('Categories/' + catId + '/Items', new http_1.RequestOptions({
+            withCredentials: true
+        })).map(this.extractArrayData)
             .catch(this.handleError);
     };
     categoryService.prototype.getHeaders = function () {

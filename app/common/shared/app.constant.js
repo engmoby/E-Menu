@@ -14,7 +14,7 @@ var APPConstant = (function () {
     }
     return APPConstant;
 }());
-APPConstant.API_URL = "http://localhost:28867/api/";
+APPConstant.API_URL = "http://ecatalogbackend.azurewebsites.net/api/";
 APPConstant.Default_Lang = "en";
 APPConstant = __decorate([
     core_1.Injectable(),

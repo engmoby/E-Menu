@@ -22,12 +22,14 @@ var MenuService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     MenuService.prototype.getData = function () {
-        return this.http.get(this.hotelUrl + 'Menus?langId=en', { headers: this.getHeaders() })
+        return this.http.get('/Menus', new http_1.RequestOptions({
+            withCredentials: true
+        }))
             .map(this.extractArrayData)
             .catch(this.handleError);
     };
     MenuService.prototype.getMenuDetails = function (id) {
-        return this.http.get(this.hotelUrl + 'Menus/' + id + '?langId=en', { headers: this.getHeaders() })
+        return this.http.get('Menus/' + id, { headers: this.getHeaders() })
             .map(this.extractData)
             .catch(this.handleError);
     };
