@@ -1,0 +1,51 @@
+ <!-- welcome -->
+ <div class="welcome">
+        <div class="container">
+          <div class="agileinfo-heading">
+            <h3>Welcome In E-Menu</h3>
+          </div>
+          <div class="agileits-welcome-grids">
+            <div class="col-md-5 agileits-welcome-left">
+              <img src="app\assets\img/2.jpg" alt="" />
+            </div>
+            <div class="col-md-7 agileits-welcome-left">
+              <h2>Aenean et ultricies mi, ac ultricies ex. Cras iaculis lectus at orci dapibus efficitur.</h2>
+              <div class="agile-border"> </div>
+              <p>Vivamus placerat velit placerat elementum vestibulum. Suspendisse faucibus, dui id sagittis dignissim, tortor mauris maximus turpis, eu vehicula est leo nec metus. Donec pellentesque felis sit amet vehicula iaculis. Fusce sollicitudin leo ipsum, nec mollis quam dignissim eu. <span>Vivamus pellentesque porttitor hendrerit. In dui justo, egestas at aliquam quis, mollis dictum ex. Curabitur laoreet pretium enim eu hendrerit. Donec vel consectetur mauris, eu malesuada magna. Praesent nec ultricies purus. Phasellus maximus efficitur velit, vel blandit diam elementum sed.</span></p>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <!-- //welcome -->
+      <!-- special -->
+      <div class="special">
+        <div class="container">
+          <div class="agileinfo-heading">
+            <h3>Specialities</h3>
+          </div>
+          <div class="special-top-grids">
+            <div class="w3-agile-special" >
+               <div class="col-md-3 special-grids"  *ngFor="let h of menuList">
+                <div class="special-img">
+                  <img class="img-responsive" src="app\assets\img/s1.jpg" alt="">
+                  <div class="captn">
+                    <div class="captn-top">
+                      <p>{{ h.menuName }}</p>
+                    </div>
+                    <div class="wthree-special-info">
+                    <a [routerLink]="['/menu', h.menuId,'category']">
+                        <h4>Open Menu</h4> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>	 
+           
+              <div class="clearfix"> </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- //special -->
+      

@@ -1,7 +1,7 @@
  
 import { Component, OnInit } from "@angular/core";
 import { MenuService  } from "./menu.service";
-import {Menu}           from './Menu';   
+import {MenuModel}           from './menu.model';   
  
 @Component({
   selector: 'my-app',  
@@ -12,7 +12,7 @@ export class MenuListComponent implements OnInit {
     constructor (private menuService: MenuService) {}
   
     errorMessage: string;
-    menuList:Menu[];
+    menuList:MenuModel[];
   
     ngOnInit() {  
       this.getMenuList(); }

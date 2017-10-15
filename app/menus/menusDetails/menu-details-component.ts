@@ -1,7 +1,7 @@
  
 import { Component, OnInit } from "@angular/core";
 import { MenuService  } from "../menu.service";
-import {Menu}           from '../Menu';
+import {MenuModel}           from '../menu.model';
 import {  ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class MenuDetailsComponent implements OnInit {
     constructor (private menuService: MenuService, private route: ActivatedRoute) {}
     private sub:any;
     errorMessage: string;
-    menuObj:Menu;
+    menuObj:MenuModel;
   
     ngOnInit() {   
   // Subscribe to route params

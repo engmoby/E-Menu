@@ -4,14 +4,16 @@ var menu_list_component_1 = require("../../menus/menu-list.component");
 var menu_details_component_1 = require("../../menus/menusDetails/menu-details-component");
 var category_component_1 = require("../../categories/category.component");
 var item_component_1 = require("../../items/item.component");
+var home_component_1 = require("../../home/home.component");
 // import { dogRoutes }    from './dogs/dog.routes';
 // Route Configuration
 exports.routes = [
     {
         path: '',
-        redirectTo: '/menu',
+        redirectTo: '/home',
         pathMatch: 'full'
     },
+    { path: 'home', component: home_component_1.HomeComponent },
     { path: 'menu', component: menu_list_component_1.MenuListComponent },
     { path: 'menu/:id', component: menu_details_component_1.MenuDetailsComponent },
     { path: 'menu/:id/category', component: category_component_1.CategoryListComponent },

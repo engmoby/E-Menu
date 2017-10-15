@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 // Declarations
 var app_Component_1 = require("../../common/app-component/app.Component");
 var menu_list_component_1 = require("../../menus/menu-list.component");
+var home_component_1 = require("../../home/home.component");
 var category_component_1 = require("../../categories/category.component");
 var item_component_1 = require("../../items/item.component");
 var menu_details_component_1 = require("../../menus/menusDetails/menu-details-component");
@@ -36,6 +37,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_Component_1.AppComponent,
+            home_component_1.HomeComponent,
             menu_list_component_1.MenuListComponent,
             category_component_1.CategoryListComponent,
             item_component_1.ItemListComponent,

@@ -4,6 +4,7 @@ import { MenuListComponent } from '../../menus/menu-list.component';
 import { MenuDetailsComponent } from '../../menus/menusDetails/menu-details-component';
 import { CategoryListComponent } from '../../categories/category.component'; 
 import { ItemListComponent } from '../../items/item.component';
+import { HomeComponent } from '../../home/home.component';
 // import { dogRoutes }    from './dogs/dog.routes';
 
 
@@ -11,9 +12,10 @@ import { ItemListComponent } from '../../items/item.component';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/menu',
+        redirectTo: '/home',
         pathMatch: 'full'
       }, 
+   { path: 'home', component: HomeComponent },
    { path: 'menu', component: MenuListComponent },
    { path: 'menu/:id', component: MenuDetailsComponent }, 
    { path: 'menu/:id/category', component: CategoryListComponent },

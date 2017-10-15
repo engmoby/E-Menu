@@ -5,31 +5,37 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  styleUrls: ['../app/common/app-component/app.Component.css'],
+  // styleUrls: ['../app/common/app-component/app.Component.css'],
   template: `
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--transparent">
-        <div class="mdl-layout__header-row">
+  <div class="head">
+  <div class="head-nav-grids">
+    <div class="navbar-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+           <div class="navbar-brand logo ">
+            <h1><a [routerLink]="['/home']">E-Menu</a></h1>
+          </div>
 
-          <!-- Title -->
-          <span class="mdl-layout-title">E-Menu</span>
-
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-
-          <!-- Navigation with router directives-->
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" [routerLink]="['/']">Home</a> 
-            <a class="mdl-navigation__link" [routerLink]="['/menu']">Menu</a>
-          </nav>
         </div>
-      </header>
 
-      <main class="mdl-layout__content">
-      <h1 class="header-text">Welcome</h1>       
-      </main>
-      
-    </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav link-effect-4">
+        <li class="active"><a [routerLink]="['/home']">Home</a> </li>
+          <li><a  [routerLink]="['/menu']">Menu </a> </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div> 
+    <div class="clearfix"></div>	
+  </div>
+</div> 
+
 
     <!-- Router Outlet --> 
     <router-outlet></router-outlet>

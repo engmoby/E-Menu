@@ -6,6 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 // Declarations
 import { AppComponent }         from '../../common/app-component/app.Component';  
 import { MenuListComponent }      from '../../menus/menu-list.component';
+import { HomeComponent }      from '../../home/home.component';
 import { CategoryListComponent }      from '../../categories/category.component';
 import { ItemListComponent } from '../../items/item.component';
 import { MenuDetailsComponent } from '../../menus/menusDetails/menu-details-component';
@@ -26,6 +27,7 @@ import { routing } from '../../common/route/app.routes';
   ],
   declarations: [
     AppComponent, 
+    HomeComponent,
     MenuListComponent,
     CategoryListComponent,
     ItemListComponent,
