@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,Headers } from '@angular/http'; 
+import { Http, Response,Headers ,RequestOptions} from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
 import {MenuModel}           from './menu.model';
+<<<<<<< HEAD
+=======
+import { APPConstant } from '../common/shared/app.constant'
+
+>>>>>>> d2871b252e2b4ada891eb43d64cb3fba2594863e
 @Injectable()
 export class MenuService {
   
-    private hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
   constructor ( private http: Http  ) { }
    
    
@@ -16,13 +20,23 @@ export class MenuService {
     return Observable.throw(error.json().error || 'Server error');
   }
   getData():Observable<MenuModel[]> {
+<<<<<<< HEAD
     return this.http.get(this.hotelUrl+'Menus?langId=en', {headers: this.getHeaders()})
+=======
+    return this.http.get('/Menus',new RequestOptions({
+        withCredentials:true
+      }))
+>>>>>>> d2871b252e2b4ada891eb43d64cb3fba2594863e
         .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
 getMenuDetails(id:number):Observable<MenuModel> {
+<<<<<<< HEAD
     return this.http.get(this.hotelUrl+'Menus/'+id+'?langId=en', {headers: this.getHeaders()})
+=======
+    return this.http.get(APPConstant.API_URL+'Menus/'+id , {headers: this.getHeaders()})
+>>>>>>> d2871b252e2b4ada891eb43d64cb3fba2594863e
         .map(this.extractData)
         .catch(this.handleError);
 }

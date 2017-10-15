@@ -14,7 +14,6 @@ var Observable_1 = require("rxjs/Observable");
 var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
-        this.hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/';
     }
     MenuService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

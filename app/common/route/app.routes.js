@@ -5,8 +5,6 @@ var menu_details_component_1 = require("../../menus/menusDetails/menu-details-co
 var category_component_1 = require("../../categories/category.component");
 var item_component_1 = require("../../items/item.component");
 var home_component_1 = require("../../home/home.component");
-// import { dogRoutes }    from './dogs/dog.routes';
-// Route Configuration
 exports.routes = [
     {
         path: '',

@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var menu_service_1 = require("./menu.service");
 var MenuListComponent = (function () {
-    function MenuListComponent(menuService) {
+    function MenuListComponent(menuService, authenticationService) {
         this.menuService = menuService;
+        this.authenticationService = authenticationService;
     }
     MenuListComponent.prototype.ngOnInit = function () {
         this.getMenuList();
@@ -21,6 +22,9 @@ var MenuListComponent = (function () {
         var _this = this;
         this.menuService.getData()
             .subscribe(function (posts) { return _this.menuList = posts; }, function (error) { return _this.errorMessage = error; });
+        console.log(this.authenticationService.getToken());
+        console.log(this.authenticationService.getToken().access_token);
+        console.log(this.menuList);
     };
     return MenuListComponent;
 }());
@@ -29,7 +33,7 @@ MenuListComponent = __decorate([
         selector: 'my-app',
         templateUrl: '../app/menus/menu-list-component.html',
     }),
-    __metadata("design:paramtypes", [menu_service_1.MenuService])
+    __metadata("design:paramtypes", [menu_service_1.MenuService, Object])
 ], MenuListComponent);
 exports.MenuListComponent = MenuListComponent;
 //# sourceMappingURL=menu-list.component.js.map
