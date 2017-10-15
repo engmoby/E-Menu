@@ -1,9 +1,62 @@
 <div>
     <ul class="items">
         <li *ngFor="let h of categorylist"> 
-                <img src="{{h.imageURL}}"/>
-        <span>{{ h.categoryName }}</span>
+            <a  (click)="getItemList(h.categoryId)" > 
+                  <img src="{{h.imageURL}}"/>
+                  <span>{{ h.categoryName }}</span> 
+
+        </a> 
+
         
         </li>
     </ul>
+
+    <div *ngIf="itemslist">   
+        <div *ngFor="let i of itemslist">
+            <img [src]="i.imageURL" width="200" />
+          Title  <span>{{ i.itemName }}</span>
+          <br> 
+          Description <span>{{ i.itemDescription }}</span>
+           <br> 
+           <span *ngFor="let s of i.sizes">
+                <!-- <input type="radio" id="s.sizeId"> -->
+              
+                <input type="radio" name="radiogroup" 
+                [checked]="idx === 0" 
+                [value]="s.sizeId" 
+                (change)="onSelectionChange(entry)">
+
+                {{ s.sizeName }} :          
+                {{ s.price }}<br>
+            </span>
+            <br> 
+            
+            <span *ngFor="let sideObj of i.sideItems">
+                    <input type="checkbox" id="sideObj.sideItemId">
+                    {{ sideObj.sideItemName }} :          
+                    {{ sideObj.value }}<br>
+                </span>
+        </div>
+<!-- 
+        <ul class="items">
+                <li *ngFor="let s of i.sizes"> 
+                     
+                          <span>{{ s.sizeName }}</span> 
+        
+                
+        
+                
+                </li>
+            </ul> -->
+
+    </div>  
+
+    <!-- <ul >
+        <li *ngFor="let i of  Itemlist"> 
+                <img src="{{i.imageURL}}"/>
+        <span>{{ i.itemName }}</span>
+        <span>{{ i.itemDescription }}</span>
+        
+        </li>
+    </ul> -->
  </div> 

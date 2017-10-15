@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Injector } from '@angular/core';
 import { Http, Response,Headers } from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
 import { AuthorizationService }           from '../authorization/authorization.service';
@@ -7,7 +7,11 @@ import { APPConstant } from '../shared/app.constant'
 @Injectable()
 export class AuthenticationService {
   
-  constructor ( private http: Http, private authorizationService:AuthorizationService  ) { }
+  private http: Http;
+  
+  constructor (injector:Injector , private authorizationService:AuthorizationService  ) { 
+    setTimeout(() => this.http = injector.get(Http));
+  }
   
 
   authenticate(email:string,password:string):any{
@@ -16,7 +20,7 @@ export class AuthenticationService {
    }
    
    requestToken(creds:any):any {
-    var result = this.http.post(APPConstant.API_URL + "token",creds, {headers: this.getHeaders()})
+    var result = this.http.post( "token",creds, {headers: this.getHeaders()})
     .map(response => this.authorizationService.setAuthInfo(response.json()))
     // .map(this.extractData(Response,this.authorizationService))
     .catch(this.handleError).subscribe()
@@ -27,10 +31,10 @@ export class AuthenticationService {
   isAuthenticated() {
     return !!this.authorizationService.getAuthInfo();
   }
-  getToken(forceRefresh) {
+  getToken() {
     var authInfo = this.authorizationService.getAuthInfo();
     var expirydate = new Date(authInfo['.expires']); 
-    if (forceRefresh || new Date() >= expirydate) {
+    if (new Date() >= expirydate) {
       return this.refreshToken(authInfo['refresh_token'])
     }
     return authInfo;

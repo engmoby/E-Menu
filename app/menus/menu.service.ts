@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,Headers } from '@angular/http'; 
+import { Http, Response,Headers ,RequestOptions} from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
-import {Menu}           from './Menu';
+import {MenuModel}           from './menu.model';
+import { APPConstant } from '../common/shared/app.constant'
+
 @Injectable()
 export class MenuService {
   
-    private hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
   constructor ( private http: Http  ) { }
    
    
@@ -15,14 +16,16 @@ export class MenuService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-  getData():Observable<Menu[]> {
-    return this.http.get(this.hotelUrl+'Menus?langId=en', {headers: this.getHeaders()})
+  getData():Observable<MenuModel[]> {
+    return this.http.get('/Menus',new RequestOptions({
+        withCredentials:true
+      }))
         .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
-getMenuDetails(id:number):Observable<Menu> {
-    return this.http.get(this.hotelUrl+'Menus/'+id+'?langId=en', {headers: this.getHeaders()})
+getMenuDetails(id:number):Observable<MenuModel> {
+    return this.http.get(APPConstant.API_URL+'Menus/'+id , {headers: this.getHeaders()})
         .map(this.extractData)
         .catch(this.handleError);
 }
@@ -30,7 +33,7 @@ getMenuDetails(id:number):Observable<Menu> {
 private getHeaders(){
     let headers = new Headers();
     headers.append('Accept', 'application/json');
-    headers.append('Authorization','bearer x3n1vSQeK4e8SqlCGc_K8dFhVmUdO9CMhWXO-SEqpHzSzzUg6QvjKHq5-WEu81htAl7hYGTH3WjEfIApJUeBP9bNnNTx9W2J6mrb6-6P9102qhkugsYU3y4cCtreu6B8ZTgweKV4xjabQ_Wi3eG7QsYs2OiZHUGOQQoAp-MeUEktldJotiZ0w-XBQy6-omkE7uXA9k3QPKyUIhpJ_1s0wZ6soMrRVMAL6HxEELoOh-XfYV6r0ofIeNi_xuL6jHjtvY93aONAFxEy8AoSQh0r9xLS3i2jeN1h9Z7IQgZwgGi6DS1Bc28O0BgniFG-pdOYiy3RxXBv56wL_QNUaNzx3E-OGyi7mPhwqTG1D75Wh7Q');
+    headers.append('Authorization','bearer cRht-PALtmCT2OxVUU3tOoiYVwCW1xGIHw0NxGOhJY2BUWuaIIAcnhPbrRqRVwbCXnwXAYckguiyShLVAcS2iBq19vrz-jKaIXrp8FKZ-KRkZTfLqHXXVjuW4T1OS1qyiAfIDz8X69QIWhfENZvYOB8BuV84rdRvSTPzODqlki-yS2QaaK3llhALr0cBOKGiwzjtburabtybCfD7FB8renNq7b5oqHuXcfyjh9Ji0y5vhFYHBc6VsSl5sxl_Z445DwXwMU0Ld0nLyquOoUzZa65xRmtX5OBR0KpdNS6YgcNRkg0SifEUdw1iniKHDy5BZEirXwdWCmb6nLCxc6Ve7itErwMg_PosD6gF0QEYopY');
     return headers;
   }
 

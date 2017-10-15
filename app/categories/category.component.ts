@@ -1,7 +1,8 @@
  
 import { Component, OnInit } from "@angular/core";
 import { categoryService  } from "./category.service";
-import {category}           from './category';   
+import {CategoryModel}           from './category.model';   
+import {ItemModel}           from '../items/item.model';   
 import {  ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,10 +15,10 @@ export class CategoryListComponent implements OnInit {
     
     private sub:any;    
     errorMessage: string;
-    categorylist:category[];
-  
+    categorylist:CategoryModel[]; 
+    itemslist:ItemModel[];
     ngOnInit() {  
-      this.getMenuList(); }
+      this.getMenuList();   }
     
     getMenuList() {
         this.sub = this.route.params.subscribe(params => {
@@ -33,5 +34,14 @@ export class CategoryListComponent implements OnInit {
                 });  
      
   }
-   
+  getItemList(catId) {
+     this.sub = this.route.params.subscribe(params => {
+         
+    this.categoryService.getItemsList(catId)
+        .subscribe(
+            posts => this.itemslist = posts,
+            error => this.errorMessage = <any>error);
+          });  
+console.log(this.itemslist);
+}
   } 

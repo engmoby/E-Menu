@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
+var app_constant_1 = require("../common/shared/app.constant");
 var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
-        this.hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/';
     }
     MenuService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
@@ -23,19 +23,21 @@ var MenuService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     MenuService.prototype.getData = function () {
-        return this.http.get(this.hotelUrl + 'Menus?langId=en', { headers: this.getHeaders() })
+        return this.http.get('/Menus', new http_1.RequestOptions({
+            withCredentials: true
+        }))
             .map(this.extractArrayData)
             .catch(this.handleError);
     };
     MenuService.prototype.getMenuDetails = function (id) {
-        return this.http.get(this.hotelUrl + 'Menus/' + id + '?langId=en', { headers: this.getHeaders() })
+        return this.http.get(app_constant_1.APPConstant.API_URL + 'Menus/' + id, { headers: this.getHeaders() })
             .map(this.extractData)
             .catch(this.handleError);
     };
     MenuService.prototype.getHeaders = function () {
         var headers = new http_1.Headers();
         headers.append('Accept', 'application/json');
-        headers.append('Authorization', 'bearer x3n1vSQeK4e8SqlCGc_K8dFhVmUdO9CMhWXO-SEqpHzSzzUg6QvjKHq5-WEu81htAl7hYGTH3WjEfIApJUeBP9bNnNTx9W2J6mrb6-6P9102qhkugsYU3y4cCtreu6B8ZTgweKV4xjabQ_Wi3eG7QsYs2OiZHUGOQQoAp-MeUEktldJotiZ0w-XBQy6-omkE7uXA9k3QPKyUIhpJ_1s0wZ6soMrRVMAL6HxEELoOh-XfYV6r0ofIeNi_xuL6jHjtvY93aONAFxEy8AoSQh0r9xLS3i2jeN1h9Z7IQgZwgGi6DS1Bc28O0BgniFG-pdOYiy3RxXBv56wL_QNUaNzx3E-OGyi7mPhwqTG1D75Wh7Q');
+        headers.append('Authorization', 'bearer cRht-PALtmCT2OxVUU3tOoiYVwCW1xGIHw0NxGOhJY2BUWuaIIAcnhPbrRqRVwbCXnwXAYckguiyShLVAcS2iBq19vrz-jKaIXrp8FKZ-KRkZTfLqHXXVjuW4T1OS1qyiAfIDz8X69QIWhfENZvYOB8BuV84rdRvSTPzODqlki-yS2QaaK3llhALr0cBOKGiwzjtburabtybCfD7FB8renNq7b5oqHuXcfyjh9Ji0y5vhFYHBc6VsSl5sxl_Z445DwXwMU0Ld0nLyquOoUzZa65xRmtX5OBR0KpdNS6YgcNRkg0SifEUdw1iniKHDy5BZEirXwdWCmb6nLCxc6Ve7itErwMg_PosD6gF0QEYopY');
         return headers;
     };
     MenuService.prototype.extractData = function (res) {

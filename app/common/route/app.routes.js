@@ -4,6 +4,7 @@ var menu_list_component_1 = require("../../menus/menu-list.component");
 var menu_details_component_1 = require("../../menus/menusDetails/menu-details-component");
 var category_component_1 = require("../../categories/category.component");
 var login_component_1 = require("../../login/login.component");
+var item_component_1 = require("../../items/item.component");
 // import { dogRoutes }    from './dogs/dog.routes';
 // Route Configuration
 exports.routes = [
@@ -16,6 +17,7 @@ exports.routes = [
     { path: 'menu', component: menu_list_component_1.MenuListComponent },
     { path: 'menu/:id', component: menu_details_component_1.MenuDetailsComponent },
     { path: 'menu/:id/category', component: category_component_1.CategoryListComponent },
+    { path: 'menu/:id/item', component: item_component_1.ItemListComponent },
 ];
 // Deprecated provide
 // export const APP_ROUTER_PROVIDERS = [

@@ -1,7 +1,8 @@
  
 import { Component, OnInit } from "@angular/core";
 import { MenuService  } from "./menu.service";
-import {Menu}           from './Menu';   
+import {MenuModel}           from './menu.model';  
+import { AuthenticationService }  from '../common/authentication/authentication.service'
  
 @Component({
   selector: 'my-app',  
@@ -9,10 +10,10 @@ import {Menu}           from './Menu';
 }) 
 export class MenuListComponent implements OnInit {
   
-    constructor (private menuService: MenuService) {}
+    constructor (private menuService: MenuService, private authenticationService:AuthenticationService) {}
   
     errorMessage: string;
-    menuList:Menu[];
+    menuList:MenuModel[];
   
     ngOnInit() {  
       this.getMenuList(); }
@@ -22,6 +23,10 @@ export class MenuListComponent implements OnInit {
           .subscribe(
               posts => this.menuList = posts,
               error => this.errorMessage = <any>error);
+              console.log(this.authenticationService.getToken())
+              console.log(this.authenticationService.getToken().access_token)              
+              console.log(this.menuList)
+              
   }
    
   } 

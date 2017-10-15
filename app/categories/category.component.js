@@ -28,6 +28,14 @@ var CategoryListComponent = (function () {
                 .subscribe(function (posts) { return _this.categorylist = posts; }, function (error) { return _this.errorMessage = error; });
         });
     };
+    CategoryListComponent.prototype.getItemList = function (catId) {
+        var _this = this;
+        this.sub = this.route.params.subscribe(function (params) {
+            _this.categoryService.getItemsList(catId)
+                .subscribe(function (posts) { return _this.itemslist = posts; }, function (error) { return _this.errorMessage = error; });
+        });
+        console.log(this.itemslist);
+    };
     return CategoryListComponent;
 }());
 CategoryListComponent = __decorate([

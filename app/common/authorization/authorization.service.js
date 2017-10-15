@@ -23,6 +23,9 @@ var AuthorizationService = (function () {
         this.localStorageService.get('authInfo')['expires_in'] = currentDate.setSeconds(currentDate.getSeconds() + this.localStorageService.get('authInfo')['expires_in']);
         // $localStorage.authInfo['expires_in'] = currentDate.setSeconds(currentDate.getSeconds() + $localStorage.authInfo['expires_in']);
     };
+    AuthorizationService.prototype.getAuthInfo = function () {
+        return this.localStorageService.get('authInfo');
+    };
     return AuthorizationService;
 }());
 AuthorizationService = __decorate([

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response,Headers } from '@angular/http'; 
 import {Observable}     from 'rxjs/Observable';
-import {category}           from './category';
+import {CategoryModel}           from './category.model';
+import {ItemModel}           from '../items/item.model';
 @Injectable()
 export class categoryService {
   
-    private hotelUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
+    private apiUrl = 'http://ecatalogbackend.azurewebsites.net/api/'; 
   constructor ( private http: Http  ) { }
    
    
@@ -15,22 +16,23 @@ export class categoryService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-  getData(menuId:number):Observable<category[]> {
-    return this.http.get(this.hotelUrl+'Menus/'+menuId+'/Categories', {headers: this.getHeaders()})
+
+  getData(menuId:number):Observable<CategoryModel[]> {
+    return this.http.get(this.apiUrl+'Menus/'+menuId+'/Categories', {headers: this.getHeaders()})
         .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
-getMenuDetails(id:number):Observable<category> {
-    return this.http.get(this.hotelUrl+'Categories/'+id, {headers: this.getHeaders()})
-        .map(this.extractData)
+  getItemsList(catId:number):Observable<ItemModel[]> {
+    return this.http.get(this.apiUrl+'Categories/'+catId+'/Items', {headers: this.getHeaders()})
+        .map(this.extractArrayData)
         .catch(this.handleError);
 }
 
 private getHeaders(){
     let headers = new Headers();
     headers.append('Accept', 'application/json');
-    headers.append('Authorization','bearer b6QVUalyNyZU6-zOqpce4QzqSrrbt-TnA106SDrTjggc-3UQ9taCkRhjGXwhfncUKIJMdgmpOd7Mky8IyMJQpCXlj6-Y6E26zm70incQ4EpATFqWg9s2isvgFA-1Sktk5EgqhlNGp6IhbRKRICfW73MbLPkrNQMcOo9fko4M29jW8C5WnTNFK-tEivay-cfzhZcatyrXGv8u7eM_aYlvyfbHhODovATkwlPHMcEOdDylnrTiJl9nPv8-an3q_1q23jrhrvrioS26ElWkFmSSPjheH8rpK0m-5ShJH-xThS2QFhVVC-BEwDliYkK5wDr1kdDVXkvhj7iWRcLwqJV-Hq3aERJ_UcAyftEUpc7UiVE');
+    headers.append('Authorization','bearer cRht-PALtmCT2OxVUU3tOoiYVwCW1xGIHw0NxGOhJY2BUWuaIIAcnhPbrRqRVwbCXnwXAYckguiyShLVAcS2iBq19vrz-jKaIXrp8FKZ-KRkZTfLqHXXVjuW4T1OS1qyiAfIDz8X69QIWhfENZvYOB8BuV84rdRvSTPzODqlki-yS2QaaK3llhALr0cBOKGiwzjtburabtybCfD7FB8renNq7b5oqHuXcfyjh9Ji0y5vhFYHBc6VsSl5sxl_Z445DwXwMU0Ld0nLyquOoUzZa65xRmtX5OBR0KpdNS6YgcNRkg0SifEUdw1iniKHDy5BZEirXwdWCmb6nLCxc6Ve7itErwMg_PosD6gF0QEYopY');
     return headers;
   }
 
