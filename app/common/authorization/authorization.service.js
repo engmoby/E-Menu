@@ -27,6 +27,9 @@ var AuthorizationService = (function () {
     AuthorizationService.prototype.isLoggedIn = function () {
         return !!this.localStorageService.get('authInfo');
     };
+    AuthorizationService.prototype.logout = function () {
+        this.localStorageService.add('authInfo', null);
+    };
     return AuthorizationService;
 }());
 AuthorizationService = __decorate([

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { AuthorizationService } from '../authorization/authorization.service'
+import {Router} from '@angular/router';
+
 // Import router directives
 // Deprecated
 // import { ROUTER_DIRECTIVES } from '@angular/router'; 
@@ -29,6 +32,7 @@ import { Component } from '@angular/core';
          <ul class="nav navbar-nav link-effect-4">
         <li class="active"><a [routerLink]="['/home']">Home</a> </li>
         <!-- <li><a  [routerLink]="['/menu']">Menu </a> </li>-->
+        <li><a (click)="logout()"> logout </a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div> 
@@ -47,4 +51,11 @@ import { Component } from '@angular/core';
 })
 
 // App Component class
-export class AppComponent {}
+export class AppComponent {
+  constructor ( private authorizationService: AuthorizationService,private router:Router ) { }
+
+  logout(){
+    this.authorizationService.logout();
+    this.router.navigateByUrl('/login');
+  }
+}

@@ -21,4 +21,7 @@ export class AuthorizationService {
     isLoggedIn() {
       return !!this.localStorageService.get('authInfo');
     }
+    logout() {
+      this.localStorageService.add('authInfo', null);
+    }
 } 
